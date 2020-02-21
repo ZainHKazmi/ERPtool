@@ -8,7 +8,7 @@ class Users extends Component {
 		      users: {},
 		    };
 	 async componentDidMount() {
-	 	axios.get('http://127.0.0.1:8000/users/').then(res=>{
+	 	axios.get('http://localhost:8000/users/').then(res=>{
 			console.log(res.data);
 			this.setState({users: res.data.results});
 			
@@ -18,7 +18,7 @@ class Users extends Component {
 		      return(
 			<div style={background}>
 			      <div style={whiteStyle}>
-			      {JSON.stringify(this.state.users)}
+			      {JSON.stringify(this.state)}
 			      </div>
 			 </div>
 
@@ -30,13 +30,12 @@ class Users extends Component {
 const background = {
 	backgroundImage: 'linear-gradient(to bottom right, #77a6f7, black)',
 	width: "100%",
-	height: "600px",
-	marginTop: "20px",
+	height: "100%",
+	position: "fixed",
 }
 const whiteStyle = {
 	backgroundColor: '#FFFFFF',
-	padding: "10px 10px 10px 10px",
-	marginTop: "20px",
-	position: "relative",
+	position: "fixed",
+	marginTop: "200px",
 }
 export default Users;
