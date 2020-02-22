@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Header, Card, Button} from 'semantic-ui-react';
 
 const axios = require('axios');
 
 class Users extends Component {
 	  state = {
-		      users: {},
+		      users: [],
 		    };
 	 async componentDidMount() {
 	 	axios.get('http://localhost:8000/users/').then(res=>{
@@ -17,25 +16,34 @@ class Users extends Component {
 	 render() {
 		      return(
 			<div style={background}>
-			      <div style={whiteStyle}>
-			      {JSON.stringify(this.state)}
-			      </div>
-			 </div>
-
+			      <form>
+			      {this.state.users.map((user) => (
+				<li style={whiteStyle}>
+					<h1 style={{padding: "20px 20px 0px 20px"}}>{user.username}</h1>
+				      	<p style= {{padding: "20px 20px 20px 20px"}}>{user.email}</p>
+				</li>
+			      
+			      ))}
+			      </form>
+			</div>
 	 
-	 	);
-		    }
+	 );
+	 }
 }
 
+
 const background = {
-	backgroundImage: 'linear-gradient(to bottom right, #77a6f7, black)',
+	backgroundImage: "linear-gradient(to bottom right, #77a6f7, black)",
 	width: "100%",
-	height: "100%",
-	position: "fixed",
+	minHeight: "900px",
+	display: "flex",
+	justify: "center",
 }
 const whiteStyle = {
 	backgroundColor: '#FFFFFF',
-	position: "fixed",
-	marginTop: "200px",
+	borderRadius: "10px",
+	width: "300px",
+	display: "inline-block",
+	margin: "10px 10px 10px 10px",
 }
 export default Users;
