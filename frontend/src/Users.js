@@ -7,7 +7,7 @@ class Users extends Component {
 		      users: [],
 		    };
 	 async componentDidMount() {
-	 	axios.get('http://localhost:8000/users/').then(res=>{
+	 	axios.get('http://localhost:8000/users/', { headers: { Authorization: 'Token 8d90460c3ca2a62c0a0b5fddb3e171a0333b42bd'   }  }).then(res=>{
 			console.log(res.data);
 			this.setState({users: res.data.results});
 			
